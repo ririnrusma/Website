@@ -1,0 +1,59 @@
+.beranda {
+    width: 100%;
+    min-height: 100vh; 
+    text-align: left;
+    font-size: 20px;
+    font-family: Inter;
+    background-image: url("/assets/img/bg front end.jpg");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+  .sewaWrapper {
+    position: absolute;
+    top: 500px;
+    left: 86px;
+    border-radius: 5px;
+    background-color: #ff2020;
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 32px;
+    box-sizing: border-box;
+  }
+
+  .sewaWrapper:hover {
+    background-color: #e60000;
+}
+  .sewa {
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    letter-spacing: -0.01em;
+    line-height: 150%;
+  }
+  
+  .tag {
+    position: absolute;
+    top: 400px;
+    left: 86px;
+    letter-spacing: -0.01em;
+    line-height: 150%;
+  }
+  
+  .sewaContainer {
+    position: absolute;
+    top: 300px;
+    left: 86px;
+    letter-spacing: -0.01em;
+    line-height: 150%;
+    display: inline-block;
+    width: 428px;
+    height: 108px;
+  }
+  
+  .sewaText {
+    margin: 0;
+    font-weight: bold;
+  }

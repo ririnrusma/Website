@@ -1,15 +1,36 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser  } from '@fortawesome/free-solid-svg-icons';
-import { Link, useLocation } from "react-router-dom";
-import React from 'react';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
 import './nav.css';
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const logo = 'assets/img/navlogo.png';
   const location = useLocation();
+  const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleUserIconClick = () => {
+    if (isLoggedIn) {
+      navigate('/profile');
+    } else {
+      setShowPopup(true);
+    }
+  };
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    setShowPopup(false);
+    navigate('/login'); 
+  };
+
+  const handleRegister = () => {
+    setShowPopup(false);
+    navigate('/register'); 
+  };
 
   return (
-    <div className='navbar'>
+    <div className="navbar"> 
       <div className='container'>
         <div className='navbar-box'>
           <img src={logo} alt="Veloz Logo" className='logo' />
@@ -41,14 +62,22 @@ const Navbar = () => {
             </li>
           </ul>
           <div className='akun'>
-            <a href='#' className='akun-button'>
+            <button onClick={handleUserIconClick} className='akun-button'>
               <FontAwesomeIcon icon={faUser } />
-            </a>
+            </button>
+            {showPopup && !isLoggedIn && (
+              <div className="popup">
+                <div className="popup-content">
+                  <button onClick={handleLogin} className="login-btn">Masuk</button>
+                  <button onClick={handleRegister} className="register-btn">Daftar</button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;
