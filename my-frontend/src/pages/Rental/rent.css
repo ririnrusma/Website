@@ -99,38 +99,41 @@ body{
   }
 
   .rent-acc-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     max-width: 800px;
-    height: 350px;
+    height: auto;
     margin: 20px auto;
     padding: 50px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-  }
-  
-  .acc-img {
-    width: 100%;
+}
+
+.acc-img {
+    max-width: 100%;
     height: auto;
     border-radius: 10px;
-  }
-  
-  .acc-message {
+}
+
+.acc-message {
     margin: 20px 0;
-  }
-  
-  .acc-title {
+}
+
+.acc-title {
     font-size: 24px;
     font-weight: bold;
-  }
-  
-  .acc-description {
+}
+
+.acc-description {
     font-size: 16px;
     color: #333;
-  }
-  
-  .buttonklik {
+}
+
+.buttonklik {
     display: inline-block;
     padding: 10px 20px;
     background-color: #ff2020;
@@ -140,15 +143,66 @@ body{
     transition: background-color 0.3s;
     border: none;
     cursor: pointer;
-  }
-  
-  .buttonklik:hover {
+}
+
+.buttonklik:hover {
     background-color: #d00000;
-  }
+}
+
+@media (max-width: 600px) {
+    .rent-acc-card {
+        padding: 20px;
+    }
+    
+    .acc-title {
+        font-size: 20px;
+    }
+    
+    .acc-description {
+        font-size: 14px;
+    }
+    
+    .buttonklik {
+        padding: 8px 16px;
+    }
+}
 
   .harga {
     padding: 10px;
-     border: 1px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
+
+.transaksi-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transaksi-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.transaksi-table th,
+.transaksi-table td {
+  border: 1px solid #fff;
+  padding: 12px;
+  text-align: left;
+}
+
+.transaksi-table th {
+  background-color: #ff2020;
+  color: white;
+}
+
+.transaksi-table tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.transaksi-table tr:hover {
+  background-color: #fff;
+}
+

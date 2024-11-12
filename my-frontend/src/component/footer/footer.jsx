@@ -8,9 +8,9 @@ const Footer = () => {
       <div className="imageContainer">
         <img className="logo" alt="" src="/assets/img/navlogo.png" />
         <b className="rentContainer">
-          <p className="rentElectricVehicle">Sewa Kendaraan Listrik</p>
-          <p className="rentElectricVehicle">Cukup dari Rumah Bersama</p>
-          <p className="rentElectricVehicle">VELOZ BICYCLE</p>
+          <p className="text-footer">Sewa Kendaraan Listrik</p>
+          <p className="text-footer">Cukup dari Rumah Bersama</p>
+          <p className="text-footer">VELOZ BICYCLE</p>
         </b>
         <b className="pollutionFree">#JalanTanpaPolusi</b>
       </div>
