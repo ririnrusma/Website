@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import './dase.css';
-import Navbar from '../../component/navbar/navbar';
-import Footer from '../../component/footer/footer';
 
 const DaftarSepeda = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -77,8 +75,6 @@ const DaftarSepeda = () => {
   ];
 
   return (
-    <div>
-    <Navbar />
     <div className="daftar-sepeda" id="daftarsepeda">
       <div className="search-container">
         <div className="search-title">Sepeda Listrik</div>
@@ -112,8 +108,6 @@ const DaftarSepeda = () => {
           </div>
         ))}
         </div>
-      </div>
-      <Footer />
     </div>
   );
 };

@@ -10,19 +10,15 @@ const RentalAcc = () => {
   const { namaLengkap, selectedBike, durasi, area} = location.state || {};
 
   return (
-    <div>
-      <Navbar />
-      <div className="rent-acc-card" id="rentalacc">
-        <img className="acc-img" alt="Pengajuan Berhasil" src="/assets/img/acc.png" />
-        <div className="acc-message">
-          <b className="acc-title">Yeay! Pengajuan Kamu Berhasil</b>
-          <div className="acc-description">Terima kasih sudah melakukan pengajuan ini, selamat menikmati.</div>
-        </div>
-        <Link to={{ pathname: "/transaksi", state: { namaLengkap, selectedBike, durasi, area} }}>
-          <button className="buttonklik">Lihat Transaksi</button>
-        </Link>
+    <div className="rent-acc-card" id="rentalacc">
+      <img className="acc-img" alt="Pengajuan Berhasil" src="/assets/img/acc.png" />
+      <div className="acc-message">
+        <b className="acc-title">Yeay! Pengajuan Kamu Berhasil</b>
+        <div className="acc-description">Terima kasih sudah melakukan pengajuan ini, selamat menikmati.</div>
       </div>
-      <Footer />
+      <Link to={{ pathname: "/transaksi", state: { namaLengkap, selectedBike, durasi, area} }}>
+        <button className="buttonklik">Lihat Transaksi</button>
+      </Link>
     </div>
   );
 };

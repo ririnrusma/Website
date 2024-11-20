@@ -13,16 +13,15 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   
   const handleUserIconClick = () => {
     if (isLoggedIn) {
-      navigate('/profile');
+      navigate('/profil');
     } else {
       setShowPopup(true);
     }
   };
 
   const handleLogin = () => {
-    setIsLoggedIn(true);
-    setShowPopup(false);
     navigate('/login'); 
+    setShowPopup(false);
   };
 
   const handleRegister = () => {
@@ -78,7 +77,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
           </ul>
           <div className='akun'>
             <button onClick={handleUserIconClick} className='akun-button'>
-              <FontAwesomeIcon icon={faUser } />
+              <FontAwesomeIcon icon={faUser  } />
             </button>
             {showPopup && !isLoggedIn && (
               <div className="popup" ref={popupRef}> 

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './rent.css'; 
-import Navbar from '../../component/navbar/navbar';
-import Footer from '../../component/footer/footer';
 
 const Rental = () => {
   const [namaLengkap, setNamaLengkap] = useState('');
@@ -52,8 +50,6 @@ const Rental = () => {
     };
 
   return (
-    <div>
-    <Navbar />
       <div className="rent-container" id="rental">
         <h2 className="title">FORM PENGAJUAN SEWA</h2>
           <div className="input">
@@ -162,8 +158,6 @@ const Rental = () => {
           <button className="submit">Kirim Pengajuan</button>
         </Link>
       </div>
-      <Footer />
-    </div>
   );
 };
 

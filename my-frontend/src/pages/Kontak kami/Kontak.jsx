@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faInstagram, faDiscord } from '@fortawesome/free-brands-svg-icons';
 import './kontak.css';
-import Navbar from '../../component/navbar/navbar';
-import Footer from '../../component/footer/footer';
 
 const ContactForm = () => {
   const navigate = useNavigate();
@@ -27,9 +25,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div>
-    <Navbar />
-      <div className="main-content" id='kontakkami'>
+    <div className="main-content" id='kontakkami'>
         <h1 className="title">Hubungi Kami</h1>
         <p className="contact-subtitle">Silakan isi formulir di bawah untuk memberikan komentar, pertanyaan, atau keluhan.</p>
         <div className="contact-container">
@@ -117,8 +113,6 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
   );
 };
 

@@ -12,9 +12,11 @@ import Transaksi from "./pages/Rental/Transaksi";
 import Register from './pages/login-signup/Register';
 import Konfirmasi from './pages/Kontak kami/konfirmasi';
 import { useState } from "react";
+import Navbar from './component/navbar/navbar'; 
+import Footer from './component/footer/footer'; 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Pastikan ini ada
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <Router>
@@ -26,6 +28,7 @@ function App() {
 function AppContent({ isLoggedIn, setIsLoggedIn }) {
   return (
     <div>
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> 
       <Routes>
         <Route path="/" element={<Beranda />} />
         <Route path="/beranda" element={<Beranda />} />
@@ -41,6 +44,7 @@ function AppContent({ isLoggedIn, setIsLoggedIn }) {
         <Route path="/konfirmasi" element={<Konfirmasi />} />
         <Route path="/profil" element={<AkunProfil />} />
       </Routes>
+      <Footer /> 
     </div>
   );
 }

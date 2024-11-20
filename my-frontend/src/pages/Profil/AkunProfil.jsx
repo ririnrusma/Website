@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import "./profile.css";
-import Navbar from "../../component/navbar/navbar";
-import Footer from "../../component/footer/footer";
 
 const AkunProfil = () => {
   const [modal, setModal] = useState(null); 
@@ -10,8 +8,6 @@ const AkunProfil = () => {
   const closeModal = () => setModal(null);
 
   return (
-    <div>
-      <Navbar />
       <div className="prof-container" id="profil">
         <div className="profile-container">
           <div className="profile-photo-border">
@@ -49,8 +45,6 @@ const AkunProfil = () => {
           <ChangePasswordModal closeModal={closeModal} />
         )}
       </div>
-      <Footer />
-    </div>
   );
 };
 

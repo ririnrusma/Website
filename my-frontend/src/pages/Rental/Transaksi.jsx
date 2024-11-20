@@ -1,16 +1,12 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './rent.css';
-import Navbar from '../../component/navbar/navbar';
-import Footer from '../../component/footer/footer';
 
 const Transaksi = () => {
   const location = useLocation();
   const { namaLengkap, selectedBike, durasi, area, harga, paymentMethod } = location.state || {};
 
   return (
-    <div>
-      <Navbar />
       <div className="transaksi-container" id="transaksi">
         <h2>Detail Transaksi</h2>
         {selectedBike ? (
@@ -48,8 +44,6 @@ const Transaksi = () => {
           <p>Tidak ada sepeda yang dipilih.</p>
         )}
       </div>
-      <Footer />
-    </div>
   );
 };
 
