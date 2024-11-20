@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './rent.css'; 
+import Navbar from '../../component/navbar/navbar';
+import Footer from '../../component/footer/footer';
 
 const Rental = () => {
   const [namaLengkap, setNamaLengkap] = useState('');
@@ -50,113 +52,117 @@ const Rental = () => {
     };
 
   return (
-    <div className="rent-container" id="rental">
-      <h2 className="title">FORM PENGAJUAN SEWA</h2>
-        <div className="input">
-          <label>Nama Lengkap</label>
-          <input type="text" placeholder="Nama Lengkap" value={namaLengkap} onChange={(e) => setNamaLengkap(e.target.value)} />
-        </div>
-        <div className="input">
-          <label>No. Telepon</label>
-          <input type="tel" placeholder="No. Telepon" />
-        </div>
-        <div className="input">
-          <label>Email</label>
-          <input type="email" placeholder="Email" />
-        </div>
-        <div className="input">
-          <label>Pekerjaan</label>
-          <select>
-            <option>Pilih</option>
-            <option>Mahasiswa</option>
-            <option>Dosen</option>
-            <option>Pelajar</option>
-            <option>Pengunjung</option>
-          </select>
-        </div>
-
-        <div className="input">
-          <label>Area</label>
-          <select value={area} onChange={(e) => setArea(e.target.value)}>
-          <option>Pilih</option>
-            <option>Institut Teknologi Sepuluh November</option>
-            <option>Universitas Airlangga</option>
-            <option>Universitas Negeri Surabaya</option>
-          </select>
-        </div>
-
-        <div className="input">
-          <label>Daftar Sepeda</label>
-          <select value={selectedBike} onChange={handleBikeChange}>
-            <option>Pilih</option>
-            <option>UNITED Salvador 2.0</option>
-            <option>EXOTIC Sepeda Listrik | X 630</option>
-            <option>Uwinfly D60</option>
-            <option>Pacific VENTURA R5</option>
-            <option>Uwinfly D7D</option>
-            <option>GODA ANGEL | GD 111</option>
-          </select>
-        </div>
-
-        <div className="input">
-          <label>Durasi</label>
-          <select value={durasi} onChange={handleDurasiChange}>
-            <option>Pilih</option>
-            <option>15 Menit</option>
-            <option>30 Menit</option>
-            <option>45 Menit</option>
-            <option>1 Jam</option>
-            <option>2 Jam</option>
-            <option>3 Jam</option>
-            <option>4 Jam</option>
-            <option>5 Jam</option>
-            <option>6 Jam</option>
-            <option>12 Jam</option>
-            <option>1 Hari </option>
-            <option>2 Hari </option>
-            <option>3 Hari </option>
-            <option>4 Hari </option>
-            <option>5 Hari </option>
-            <option>1 Minggu </option>
-          </select>
-        </div>
-        {durasi && (
-        <div className="harga">
-          <label>Harga Sewa</label>
-          <div className="harga">{`Rp ${harga.toLocaleString()}`}</div>
-        </div>
-        )}
-
-      <div className="input">
-        <label>Pembayaran</label>
-        <select onChange={handlePaymentChange}>
-          <option value="">Pilih</option>
-          <option value="Transfer Bank">Transfer Bank</option>
-          <option value="Tunai">Tunai</option>
-          <option value="Qris">Qris</option>
-        </select>
-
-        {paymentMethod === 'Transfer Bank' && (
-          <div>
-            <p>Nomor VA Anda: {vaNumber}</p>
+    <div>
+    <Navbar />
+      <div className="rent-container" id="rental">
+        <h2 className="title">FORM PENGAJUAN SEWA</h2>
+          <div className="input">
+            <label>Nama Lengkap</label>
+            <input type="text" placeholder="Nama Lengkap" value={namaLengkap} onChange={(e) => setNamaLengkap(e.target.value)} />
           </div>
-        )}
-
-        {showBarcode && (
-          <div>
-            <img src="/assets/img/barcode.png" alt="QRIS Barcode" />
+          <div className="input">
+            <label>No. Telepon</label>
+            <input type="tel" placeholder="No. Telepon" />
           </div>
-        )}
-      </div>
+          <div className="input">
+            <label>Email</label>
+            <input type="email" placeholder="Email" />
+          </div>
+          <div className="input">
+            <label>Pekerjaan</label>
+            <select>
+              <option>Pilih</option>
+              <option>Mahasiswa</option>
+              <option>Dosen</option>
+              <option>Pelajar</option>
+              <option>Pengunjung</option>
+            </select>
+          </div>
 
-      <div className="notesSection">
-        <h3>Notes</h3>
-        <textarea placeholder="Catatan" rows="4"></textarea>
-      </div>
+          <div className="input">
+            <label>Area</label>
+            <select value={area} onChange={(e) => setArea(e.target.value)}>
+            <option>Pilih</option>
+              <option>Institut Teknologi Sepuluh November</option>
+              <option>Universitas Airlangga</option>
+              <option>Universitas Negeri Surabaya</option>
+            </select>
+          </div>
 
-      <Link to={{pathname: '/transaksi', state: { namaLengkap, selectedBike, durasi, area} }}>
-        <button className="submit">Kirim Pengajuan</button>
-      </Link>
+          <div className="input">
+            <label>Daftar Sepeda</label>
+            <select value={selectedBike} onChange={handleBikeChange}>
+              <option>Pilih</option>
+              <option>UNITED Salvador 2.0</option>
+              <option>EXOTIC Sepeda Listrik | X 630</option>
+              <option>Uwinfly D60</option>
+              <option>Pacific VENTURA R5</option>
+              <option>Uwinfly D7D</option>
+              <option>GODA ANGEL | GD 111</option>
+            </select>
+          </div>
+
+          <div className="input">
+            <label>Durasi</label>
+            <select value={durasi} onChange={handleDurasiChange}>
+              <option>Pilih</option>
+              <option>15 Menit</option>
+              <option>30 Menit</option>
+              <option>45 Menit</option>
+              <option>1 Jam</option>
+              <option>2 Jam</option>
+              <option>3 Jam</option>
+              <option>4 Jam</option>
+              <option>5 Jam</option>
+              <option>6 Jam</option>
+              <option>12 Jam</option>
+              <option>1 Hari </option>
+              <option>2 Hari </option>
+              <option>3 Hari </option>
+              <option>4 Hari </option>
+              <option>5 Hari </option>
+              <option>1 Minggu </option>
+            </select>
+          </div>
+          {durasi && (
+          <div className="harga">
+            <label>Harga Sewa</label>
+            <div className="harga">{`Rp ${harga.toLocaleString()}`}</div>
+          </div>
+          )}
+
+        <div className="input">
+          <label>Pembayaran</label>
+          <select onChange={handlePaymentChange}>
+            <option value="">Pilih</option>
+            <option value="Transfer Bank">Transfer Bank</option>
+            <option value="Tunai">Tunai</option>
+            <option value="Qris">Qris</option>
+          </select>
+
+          {paymentMethod === 'Transfer Bank' && (
+            <div>
+              <p>Nomor VA Anda: {vaNumber}</p>
+            </div>
+          )}
+
+          {showBarcode && (
+            <div>
+              <img src="/assets/img/barcode.png" alt="QRIS Barcode" />
+            </div>
+          )}
+        </div>
+
+        <div className="notesSection">
+          <h3>Notes</h3>
+          <textarea placeholder="Catatan" rows="4"></textarea>
+        </div>
+
+        <Link to={{pathname: '/rentalacc', state: { namaLengkap, selectedBike, durasi, area, harga, paymentMethod} }}>
+          <button className="submit">Kirim Pengajuan</button>
+        </Link>
+      </div>
+      <Footer />
     </div>
   );
 };

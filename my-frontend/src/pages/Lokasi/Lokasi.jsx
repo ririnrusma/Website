@@ -2,6 +2,8 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import './lok.css';
+import Navbar from '../../component/navbar/navbar';
+import Footer from '../../component/footer/footer';
 
 const Lokasi = () => {
     const locations = [
@@ -24,32 +26,36 @@ const Lokasi = () => {
     };
 
     return (
-        <div className="main-container" id="lokasi">
-            {/* <div className="header-image">
-            <img alt="Header" src="/assets/img/unair.jpg" />
-            </div> */}
-            <h1 className="title">Lokasi</h1>
-            <div className="map-image">
-                <img alt="Map" src="/assets/img/loc.png" />
-            </div>
+        <div>
+        <Navbar />
+            <div className="main-container" id="lokasi">
+                {/* <div className="header-image">
+                <img alt="Header" src="/assets/img/unair.jpg" />
+                </div> */}
+                <h1 className="title">Lokasi</h1>
+                <div className="map-image">
+                    <img alt="Map" src="/assets/img/loc.png" />
+                </div>
 
-            <div className="click">
-                {locations.map((location, index) => (
-                    <div
-                        key={index}
-                        onClick={() => openLink(location.url)}
-                        className="location-item" 
-                    >
-                        <FontAwesomeIcon 
-                            className="location-icon" 
-                            icon={faMapMarkerAlt}
-                            size="s"
-                        />
-                        <span className="location-name">{location.name}</span> 
-                    </div>
-                ))}
+                <div className="click">
+                    {locations.map((location, index) => (
+                        <div
+                            key={index}
+                            onClick={() => openLink(location.url)}
+                            className="location-item" 
+                        >
+                            <FontAwesomeIcon 
+                                className="location-icon" 
+                                icon={faMapMarkerAlt}
+                                size="s"
+                            />
+                            <span className="location-name">{location.name}</span> 
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
+        <Footer />
+    </div>
     );
 };
 

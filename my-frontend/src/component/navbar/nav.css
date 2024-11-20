@@ -7,22 +7,24 @@
     background-color: #ff2020;
   }
   
-  .navbar-menu {
-    list-style-type: none;
-    padding: 0;
+  .navbar-box {
     display: flex;
-  }
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.navbar-menu {
+    display: flex; 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    margin-left: auto; 
+}
   
   .container {
     max-width: 1200px; 
     margin: 0 auto;
     padding: 0 20px;
-  }
-  
-  .navbar-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
   }
   
   .logo {

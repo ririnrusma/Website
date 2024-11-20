@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser  } from '@fortawesome/free-solid-svg-icons';
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './nav.css';
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
@@ -9,7 +9,8 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
-
+  const popupRef = useRef(null); 
+  
   const handleUserIconClick = () => {
     if (isLoggedIn) {
       navigate('/profile');
@@ -28,6 +29,20 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
     setShowPopup(false);
     navigate('/register'); 
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setShowPopup(false); 
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [popupRef]);
 
   return (
     <div className="navbar"> 
@@ -66,7 +81,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
               <FontAwesomeIcon icon={faUser } />
             </button>
             {showPopup && !isLoggedIn && (
-              <div className="popup">
+              <div className="popup" ref={popupRef}> 
                 <div className="popup-content">
                   <button onClick={handleLogin} className="login-btn">Masuk</button>
                   <button onClick={handleRegister} className="register-btn">Daftar</button>

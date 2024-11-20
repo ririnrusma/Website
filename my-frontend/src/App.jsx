@@ -1,20 +1,20 @@
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-import Navbar from "./component/navbar/navbar";
-import Footer from "./component/footer/footer";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/login-signup/login';
 import Lokasi from "./pages/Lokasi/Lokasi";
+import AkunProfil from './pages/Profil/akunProfil';
 import DaftarSepeda from "./pages/Daftar Sepeda/DaftarSepeda";
 import Rental from "./pages/Rental/Rental";
 import Sewa from "./pages/Rental/Sewa";
 import RentalAcc from "./pages/Rental/RentalAcc";
 import Beranda from "./pages/Beranda/Beranda";
-import KontakKami from "./pages/Kontak kami/KontakKami";
+import Kontak from "./pages/Kontak kami/Kontak";
 import Transaksi from "./pages/Rental/Transaksi";
 import Register from './pages/login-signup/Register';
+import Konfirmasi from './pages/Kontak kami/konfirmasi';
 import { useState } from "react";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Pastikan ini ada
 
   return (
     <Router>
@@ -24,14 +24,10 @@ function App() {
 }
 
 function AppContent({ isLoggedIn, setIsLoggedIn }) {
-  const location = useLocation();
-  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
-
   return (
     <div>
-      {!isAuthPage && <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
-      
       <Routes>
+        <Route path="/" element={<Beranda />} />
         <Route path="/beranda" element={<Beranda />} />
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/register" element={<Register />} />
@@ -41,9 +37,10 @@ function AppContent({ isLoggedIn, setIsLoggedIn }) {
         <Route path="/sewa" element={<Sewa />} />
         <Route path="/rentalacc" element={<RentalAcc />} />
         <Route path="/transaksi" element={<Transaksi />} />
+        <Route path="/kontakkami" element={<Kontak />} />
+        <Route path="/konfirmasi" element={<Konfirmasi />} />
+        <Route path="/profil" element={<AkunProfil />} />
       </Routes>
-
-      {!isAuthPage && <Footer />}
     </div>
   );
 }
