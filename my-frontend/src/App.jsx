@@ -13,7 +13,8 @@ import Register from './pages/login-signup/Register';
 import Konfirmasi from './pages/Kontak kami/konfirmasi';
 import { useState } from "react";
 import Navbar from './component/navbar/navbar'; 
-import Footer from './component/footer/footer'; 
+import Footer from './component/footer/footer';
+import Pembayaran from './pages/Rental/pembayaran'; 
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -43,6 +44,7 @@ function AppContent({ isLoggedIn, setIsLoggedIn }) {
         <Route path="/kontakkami" element={<Kontak />} />
         <Route path="/konfirmasi" element={<Konfirmasi />} />
         <Route path="/profil" element={<AkunProfil />} />
+        <Route path="/pembayaran" element={<Pembayaran />} />
       </Routes>
       <Footer /> 
     </div>

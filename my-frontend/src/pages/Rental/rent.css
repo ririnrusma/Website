@@ -206,3 +206,117 @@ body{
   background-color: #fff;
 }
 
+.pembayaran-container {
+  width: 1280px;
+  height: 823px;
+  position: relative;
+  background-color: #f9eede;
+}
+
+.detail-title {
+  position: absolute;
+  left: 50px;
+  top: 128px;
+  text-align: center;
+  color: #ff2020;
+  font-size: 32px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+.payment-info {
+  width: 824px;
+  height: 120px;
+  position: absolute;
+  left: 385px;
+  top: 234px;
+  background-color: white;
+  border: 1px solid #ff0000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 58px;
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-title {
+  text-align: center;
+  color: black;
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
+
+.info-value {
+  text-align: center;
+  color: black;
+  font-size: 1.25rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.payment-method {
+  height: 300px;
+  position: absolute;
+  left: 385px;
+  top: 394px;
+  background-color: white;
+  border: 1px solid #ff0000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.payment-info-title {
+  padding: 10px;
+  color: black;
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
+
+.payment-info-description {
+  padding: 10px;
+  color: black;
+  font-size: 1.25rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.qr-code-title {
+  position: absolute;
+  left: 60px;
+  top: 234px;
+  text-align: center;
+  color: black;
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
+
+.back-button {
+  width: 72px;
+  height: 32px;
+  position: absolute;
+  left: 1137px;
+  top: 138px;
+  background-color: #ff5d5d;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-button-text {
+  text-align: center;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
+
