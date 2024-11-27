@@ -20,7 +20,6 @@ const Login = ({ setIsLoggedIn }) => {
 
     return (
         <div className="login" id="login">
-            <img className="logo-log" alt="" src="assets/img/bg front end.jpg" />
             <div className="parent-log">
                 <img className="child-log" alt="" src="assets/img/logsign.png" />
                 <form onSubmit={handleLogin}>

@@ -1,43 +1,32 @@
 .login {
-  width: 100%;
-  height: 832px;
-  background-color: #ffe8c5;
-  overflow: hidden;
-  text-align: left;
-  font-size: 18px;
-  color: #000;
-  font-family: inter;
-}
-
-.logo-log {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1400px;
-  height: 832px;
-  object-fit: cover;
+  background-image: url('assets/img/bg front end.jpg');
   background-size: cover; 
   background-position: center;
   background-repeat: no-repeat;
+  height: 100vh;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
 }
 
 .parent-log {
   position: absolute;
-  top: 108px;
-  left: 397px;
-  width: 487px;
-  height: 500px;
-  background: rgba(255, 255, 255, 0.8);
+  top: 20%; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%; 
+  max-width: 487px;
+  height: auto;
+  background: rgba(255, 255, 255);
   border: 1px solid #000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 8px 19px;
+  padding: 16px;
   gap: 16px;
-  border-radius: 10;
+  border-radius: 10px;
 }
-
 .child-log {
   width: 150px;
   height: 100px;

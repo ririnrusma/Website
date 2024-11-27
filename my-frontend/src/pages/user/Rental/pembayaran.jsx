@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './rent.css'
 
 const Pembayaran = () => {
@@ -37,7 +38,7 @@ const Pembayaran = () => {
       </div>
       <div className="qr-code-title">SCAN QR CODE dibawah ini</div>
       <div className="back-button">
-        <div className="back-button-text">Back</div>
+        <Link to="/profil" className="back-button-text">Back</Link>
       </div>
     </div>
   );

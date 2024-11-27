@@ -12,9 +12,7 @@ const AkunProfil = () => {
         <div className="profile-container">
           <div className="profile-photo-border">
             <img
-              className="profile-photo"
-              src="profile-pic.jpg"
-              alt="Profile"
+              className="profile-photo" src="assets/img/bg front end.jpg" alt="Profile"
             />
           </div>
           <div className="profile-name-section">

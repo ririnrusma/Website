@@ -2,8 +2,6 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './rent.css';
-import Navbar from '../../component/navbar/navbar';
-import Footer from '../../component/footer/footer';
 
 const RentalAcc = () => {
   const location = useLocation();

@@ -1,16 +1,15 @@
-
 .prof-container {
   width: 1280px;
   height: 832px;
-  position: relative;
+  position: center;
 }
 
 .profile-container {
   display: flex;
   align-items: center;
   position: absolute;
-  top: 140px;
-  left: 123px;
+  top: 150px;
+  left: 240px;
 }
 
 .profile-photo-border {
@@ -40,7 +39,7 @@
   flex-direction: column;
   justify-content: left;
   align-items: flex-start;
-  padding-left: 40px; /* Tambahkan padding di kiri agar nama tidak terlalu dempet */
+  padding-left: 40px; 
   background-color: #FC7070;
   border-radius: 10px;
   border: 1px solid black;
@@ -52,8 +51,7 @@
   font-size: 32px;
   font-weight: 500;
   margin: 0;
-  padding-top: 20px; /* Menambahkan padding atas untuk memberi jarak antara nama dan border */
-
+  padding-top: 20px;
 }
 
 .profile-subtitle {
@@ -77,12 +75,11 @@
   cursor: pointer;
 }
 
-/* Options Section */
 .options-container {
   width: 1043px;
   position: absolute;
-  top: 379px;
-  left: 123px;
+  top: 350px;
+  left: 240px;
   background-color: #FC7070;
   border-radius: 10px;
   border: 1px solid black;
