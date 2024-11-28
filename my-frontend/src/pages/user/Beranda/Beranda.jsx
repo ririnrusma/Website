@@ -1,21 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
+import React from 'react';
 import './beranda.css'; 
 
-const Beranda = ({ isLoggedIn, setIsLoggedIn }) => { 
-  const [showModal, setShowModal] = useState(false); 
+const Beranda = ({ isLoggedIn }) => { 
   const navigate = useNavigate();
 
   const handleSewaClick = () => {
-    if (!isLoggedIn) {
-      setShowModal(true); 
-    } else {
+    if (isLoggedIn) {
       navigate("/daftarsepeda"); 
+    } else {
+      console.log("Pengguna tidak terautentikasi.");
     }
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false); 
   };
 
   return (
@@ -31,15 +26,6 @@ const Beranda = ({ isLoggedIn, setIsLoggedIn }) => {
           <button className="sewa" onClick={handleSewaClick}>Sewa Sekarang</button>
         </div>
       </div>
-
-      {showModal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <p>Anda harus login terlebih dahulu untuk menyewa sepeda listrik</p>
-            <button className="modal-button" onClick={handleCloseModal}>Tutup</button>
-          </div>
-        </div>
-      )}
     </div>
   ); 
 };

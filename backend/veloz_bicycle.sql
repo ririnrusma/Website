@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2024 at 07:27 PM
+-- Generation Time: Nov 28, 2024 at 12:02 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.2.34
 
@@ -82,6 +82,18 @@ CREATE TABLE `product` (
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `nama_sepeda`, `brand`, `model`, `max_load`, `motor_power`, `max_speed`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Sepeda Listrik United Salvador 2.0', 'United Bike', 'UNITED Salvador 2.0', '120 kg', '600 watt', '25 km/h', '/assets/img/United Bike - UNITED Salvador 2.0.png', '2024-11-28 04:08:33', '2024-11-28 04:08:33'),
+(2, 'Sepeda Listrik EXOTIC X 630', 'Pacific Bike', 'EXOTIC Sepeda Listrik | X 630', '150 kg', '500 watt', '40 km/h', '/assets/img/Pasific Bike - EXOTIC Sepeda Listrik X-630.png', '2024-11-28 04:08:33', '2024-11-28 04:08:33'),
+(3, 'Sepeda Listrik Uwinfly D60', 'Uwinfly', 'Uwinfly D60', '150 kg', '450 watt', '33 km/h', '/assets/img/Uwinfly - Uwinfly D60.png', '2024-11-28 04:08:33', '2024-11-28 04:08:33'),
+(4, 'Sepeda Listrik Pacific VENTURA R5', 'Pacific Bike', 'Pacific VENTURA R5', '150 kg', '550 watt', '40 km/h', '/assets/img/Pasific Bike - Pasific VENTURA R5.png', '2024-11-28 04:08:33', '2024-11-28 04:08:33'),
+(5, 'Sepeda Listrik Uwinfly D7D', 'Uwinfly', 'Uwinfly D7D', '150 kg', '450 watt', '33 km/h', '/assets/img/Uwinfly - Uwinfly D7D.png', '2024-11-28 04:08:33', '2024-11-28 04:08:33'),
+(6, 'Sepeda Listrik GODA ANGEL GD 111', 'GODA', 'GODA ANGEL | GD 111', '130 kg', '550 watt', '40 km/h', '/assets/img/GODA - GODA ANGEL GD 111.png', '2024-11-28 04:08:33', '2024-11-28 04:08:33');
+
 -- --------------------------------------------------------
 
 --
@@ -113,6 +125,7 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `refresh_token` text NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `update_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -189,7 +202,7 @@ ALTER TABLE `edit_profil`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `rental`
