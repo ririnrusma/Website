@@ -27,6 +27,7 @@
   gap: 16px;
   border-radius: 10px;
 }
+
 .child-log {
   width: 150px;
   height: 100px;
@@ -78,6 +79,7 @@
   color: #f3f3f3;
   font-weight: 600;
   cursor: pointer;
+  margin-top: 16px;
 }
 
 .separator-log {
