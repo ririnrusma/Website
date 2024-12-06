@@ -1,24 +1,29 @@
-import { Sequelize } from 'sequelize';
-import database from '../config/database.mjs';
+import { DataTypes } from "sequelize";
+import db from "../config/database.mjs";
 
-const { DataTypes } = Sequelize;
-
-const Users = database.define('users',{}, {
-    name: {
-        type: DataTypes.STRING,
-    },
-    email: {
-        type: DataTypes.STRING,
-    },
-    password: {
-        type: DataTypes.STRING,
-    },
-    refresh_token: {
-        type: DataTypes.TEXT,
-    },
-    
-}, {
-    freezeTableName: true,
+const User = db.define("users", {
+  fullName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  photo: {
+    type: DataTypes.STRING, // Menyimpan nama file foto profil
+    allowNull: true,
+  },
 });
 
-export default Users;
+export default User;
