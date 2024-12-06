@@ -1,7 +1,8 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import database from './config/database.mjs';
-import routes from './routes/app.mjs';
+import router from './routes/app.mjs';
 import dotenv from 'dotenv'
 dotenv.config();
 const app = express();
@@ -10,13 +11,17 @@ try{
     await database.authenticate();
     console.log('db connect')
 } catch(error){
-    console.error('unable to connect to the database:', error);
+    console.error(error);
 }
 
 //middleware
+app.use(cors({
+    credentials: true,
+    origin: 'http://localhost:5173'
+  }));
 app.use(cookieParser());
 app.use(express.json());
-app.use(routes);
+app.use(router);
 
 // app.use(express.urlencoded({extended: true}))
 // app.use(cors({origin: '*'}))

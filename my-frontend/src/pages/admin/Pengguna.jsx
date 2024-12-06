@@ -1,6 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Pengguna = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const getUsers = async () => {
+    try {
+      const token = localStorage.getItem('authToken'); // atau metode lain untuk menyimpan token
+      const response = await axios.get("http://localhost:5000/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      });
+      setUsers(response.data);
+    } catch (error) {
+      console.error("Failed to fetch users:", error);
+    }
+  };
+  
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/users/${id}`);
+      getUsers(); 
+    } catch (error) {
+      console.error("Failed to delete user:", error);
+    }
+  };
+
   return (
     <div style={styles.container}>
       <h2 style={styles.heading}>Pengguna</h2>
@@ -10,23 +42,26 @@ const Pengguna = () => {
             <tr>
               <th style={styles.th}>No</th>
               <th style={styles.th}>Nama Lengkap</th>
-              <th style={styles.th}>Username</th>
               <th style={styles.th}>Email</th>
-              <th style={styles.th}>Password</th>
               <th style={styles.th}>Aksi</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td style={styles.td}>1</td>
-              <td style={styles.td}>Key Alderan</td>
-              <td style={styles.td}>Key Alderan</td>
-              <td style={styles.td}>keyalderan@gmail.com</td>
-              <td style={styles.td}>fufufafa</td>
-              <td style={styles.td}>
-                <button style={styles.verifyButton}>Delete</button>
-              </td>
-            </tr>
+            {users.map((user, index) => (
+              <tr key={user.id}>
+                <td style={styles.td}>{index + 1}</td>
+                <td style={styles.td}>{user.name}</td>
+                <td style={styles.td}>{user.email}</td>
+                <td style={styles.td}>
+                  <button
+                    style={styles.verifyButton}
+                    onClick={() => handleDelete(user.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -36,9 +71,9 @@ const Pengguna = () => {
 
 const styles = {
   container: {
-    marginLeft: "200px", // Offset untuk sidebar
+    marginLeft: "200px",
     padding: "20px",
-    backgroundColor: "#fcefe3", // Warna latar belakang lembut
+    backgroundColor: "#fcefe3",
     minHeight: "100vh",
   },
   heading: {
@@ -47,18 +82,18 @@ const styles = {
     marginBottom: "20px",
   },
   tableWrapper: {
-    borderTop: "5px solid #a855f7", // Garis ungu di atas tabel
+    borderTop: "5px solid #a855f7",
     borderRadius: "10px",
-    overflow: "hidden", // Agar border terlihat rapi
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // Bayangan tabel
+    overflow: "hidden",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
   },
   table: {
     width: "100%",
     borderCollapse: "collapse",
-    backgroundColor: "#fff", // Warna dasar tabel
+    backgroundColor: "#fff",
   },
   th: {
-    backgroundColor: "#f9f9f9", // Warna header tabel
+    backgroundColor: "#f9f9f9",
     fontWeight: "bold",
     textAlign: "left",
     padding: "10px",

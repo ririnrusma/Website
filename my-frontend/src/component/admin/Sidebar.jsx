@@ -40,9 +40,9 @@ const styles = {
     borderRadius: "5px",
   },
   activeLink: {
-    fontWeight: "bold", // Membuat teks tebal
-    fontSize: "18px", // Memperbesar teks
-    backgroundColor: "#e64a45", // Warna latar belakang berbeda
+    fontWeight: "bold", 
+    fontSize: "18px", 
+    backgroundColor: "#e64a45", 
   },
 };
 

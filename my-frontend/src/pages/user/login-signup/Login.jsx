@@ -1,54 +1,66 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser , faLock } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import axios from 'axios';
 import './style.css';
 
 const Login = ({ setIsLoggedIn }) => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [msg, setMsg] = useState('');
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
-        e.preventDefault(); 
-        console.log('Logging in with:', username, password);
-        
-        setIsLoggedIn(true);
-        navigate('/beranda');
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:5000/login', {
+                email,
+                password,
+            });
+
+            console.log('Login berhasil:', response.data);
+            setIsLoggedIn(true);
+            navigate('/beranda');
+        } catch (error) {
+            if (error.response && error.response.data.msg) {
+                setMsg(error.response.data.msg);
+            } else {
+                setMsg('Terjadi kesalahan pada server.');
+            }
+        }
     };
 
     return (
         <div className="login" id="login">
             <div className="parent-log">
-                <img className="child-log" alt="" src="assets/img/logsign.png" />
+                <img className="child-log" alt="Login Illustration" src="assets/img/logsign.png" />
                 <form onSubmit={handleLogin}>
+                   <p className="error-message">{msg}</p> 
                     <div className="input-log">
-                        <div className="uname-log">
-                            <FontAwesomeIcon icon={faUser } /> Nama pengguna atau email
-                        </div>
+                        <div className="uname-log">Email atau Nama Pengguna</div>
                         <div className="wrapper-log">
-                            <input 
-                                type="text" 
-                                value={username} 
-                                onChange={(e) => setUsername(e.target.value)} 
-                                placeholder="Masukkan nama pengguna atau email" 
-                                className="input-field" 
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Masukkan email atau nama pengguna"
+                                className="input-field"
+                                required
                             />
                         </div>
                     </div>
 
                     <div className="input-log">
-                        <div className="uname-log">
-                            <FontAwesomeIcon icon={faLock} /> Kata sandi
-                        </div>
+                        <div className="uname-log">Kata Sandi</div>
                         <div className="wrapper-log">
-                            <input 
-                                type="password" 
-                                value={password} 
-                                onChange={(e) => setPassword(e.target.value)} 
-                                placeholder="Masukkan kata sandi" 
-                                className="input-field" 
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Masukkan kata sandi"
+                                className="input-field"
+                                required
                             />
                         </div>
                     </div>

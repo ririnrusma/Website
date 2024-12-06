@@ -1,15 +1,14 @@
 GET http://localhost:5000/users
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU1LCJuYW1lIjoidmVsb3oiLCJlbWFpbCI6InJ5dUBnbWFpbC5jb20iLCJpYXQiOjE3MzM1Mjc4ODEsImV4cCI6MTczMzUyNzk0MX0.pPfIXdzhKA7WhOq3Mj6HjOMDPyLvqbMIQ3UoyneW-NI
 ###
 POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name": "veloz",
-    "email": "veloz@example.com",
-    "password": "bicycle",
-    "confirPassword": "bicycle"
-
+    "name": "yu",
+    "email": "ryjgu@gmail.com",
+    "password": "bbbb97",
+    "confirPassword": "bbbb97"
 }
 
 ###
@@ -17,6 +16,12 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email": "veloz@example.com",
-    "password": "bicycle"
+    "email": "ryu@gmail.com",
+    "password": "veloz333"
 }
+
+###
+GET http://localhost:5000/token
+
+###
+DELETE http://localhost:5000/logout

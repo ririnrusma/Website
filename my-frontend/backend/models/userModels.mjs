@@ -3,7 +3,7 @@ import database from '../config/database.mjs';
 
 const { DataTypes } = Sequelize;
 
-const Users = database.define('users',{}, {
+const Users = database.define('users', {
     name: {
         type: DataTypes.STRING,
     },
@@ -16,7 +16,6 @@ const Users = database.define('users',{}, {
     refresh_token: {
         type: DataTypes.TEXT,
     },
-    
 }, {
     freezeTableName: true,
 });

@@ -1,42 +1,69 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser , faLock } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 const Register = () => {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [fullName, setFullName] = useState('');
-    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [msg, setMsg] = useState('');
+    const navigate = useNavigate(); 
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => { 
         e.preventDefault();
-        
-        // Validasi form
-        if (!email || !fullName || !username || !password) {
-            setError('Semua field harus diisi!');
+
+        if (!name || !email || !password || !confirmPassword) {
+            setMsg("Semua field harus diisi!");
             return;
         }
 
-        // Simulasi pendaftaran
-        console.log('Registering:', { email, fullName, username, password });
+        if (password !== confirmPassword) {
+            setMsg("Kata sandi dan konfirmasi kata sandi tidak cocok!");
+            return;
+        }
 
-        // Reset error jika semua field valid
-        setError('');
-        // Redirect ke halaman beranda atau lakukan pendaftaran di sini
+        try {
+            await axios.post('http://localhost:5000/users', {
+                name,
+                email,
+                password,
+                confirmPassword
+            });
+
+            navigate("/"); 
+        } catch (error) {
+            if (error.response && error.response.data.msg) {
+                setMsg(error.response.data.msg); 
+            } else {
+                setMsg("Terjadi kesalahan pada server.");
+            }
+        }
     };
 
     return (
-        <div className="login" id='register'>
+        <div className="login" id="register">
             <div className="parent-log">
-                <img className="child-log" alt="" src="assets/img/logsign.png" />
-                {error && <div className="error-message" style={{ color: 'red' }}>{error}</div>}
+                <img className="child-log" alt="Logo" src="assets/img/logsign.png" />
+                <div className="error-message" style={{ color: 'red' }}>{msg}</div>
                 <form onSubmit={handleRegister}>
                     <div className="input-log">
-                        <div className="uname-log">
-                            <FontAwesomeIcon icon={faUser } /> Email
+                        <div className="uname-log">Nama Lengkap</div>
+                        <div className="wrapper-log">
+                            <input 
+                                type="text" 
+                                placeholder="Masukkan nama lengkap" 
+                                className="input-field" 
+                                value={name}
+                                onChange={(e) => setName(e.target.value)} 
+                            />
                         </div>
+                    </div>
+
+                    {/* Input Email */}
+                    <div className="input-log">
+                        <div className="uname-log">Email</div>
                         <div className="wrapper-log">
                             <input 
                                 type="email" 
@@ -49,39 +76,7 @@ const Register = () => {
                     </div>
 
                     <div className="input-log">
-                        <div className="uname-log">
-                            <FontAwesomeIcon icon={faUser } /> Nama lengkap
-                        </div>
-                        <div className="wrapper-log">
-                            <input 
-                                type="text" 
-                                placeholder="Masukkan nama lengkap" 
-                                className="input-field" 
-                                value={fullName}
-                                onChange={(e) => setFullName(e.target.value)} 
-                            />
-                        </div>
-                    </div>
-
-                    <div className="input-log">
-                        <div className="uname-log">
-                            <FontAwesomeIcon icon={faUser } /> Nama pengguna
-                        </div>
-                        <div className="wrapper-log">
-                            <input 
-                                type="text" 
-                                placeholder="Masukkan nama pengguna" 
-                                className="input-field" 
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)} 
-                            />
-                        </div>
-                    </div>
-
-                    <div className="input-log">
-                        <div className="uname-log">
-                            <FontAwesomeIcon icon={faLock} /> Kata sandi
-                        </div>
+                        <div className="uname-log">Kata Sandi</div>
                         <div className="wrapper-log">
                             <input 
                                 type="password" 
@@ -89,6 +84,20 @@ const Register = () => {
                                 className="input-field" 
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)} 
+                            />
+                        </div>
+                    </div>
+
+                    {/* Input Konfirmasi Kata Sandi */}
+                    <div className="input-log">
+                        <div className="uname-log">Konfirmasi Kata Sandi</div>
+                        <div className="wrapper-log">
+                            <input 
+                                type="password" 
+                                placeholder="Masukkan konfirmasi kata sandi" 
+                                className="input-field" 
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)} 
                             />
                         </div>
                     </div>

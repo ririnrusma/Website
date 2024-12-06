@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
 import "./profile.css";
 
 const AkunProfil = () => {
@@ -7,20 +8,29 @@ const AkunProfil = () => {
 
   const closeModal = () => setModal(null);
 
+  const navigate = useNavigate();
+
+  const Logout = async() => {
+    try{
+        await axios.delete('http://localhost:5000/logout');
+        navigate("/beranda")
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
       <div className="prof-container" id="profil">
         <div className="profile-container">
           <div className="profile-photo-border">
-            <img
-              className="profile-photo" src="assets/img/bg front end.jpg" alt="Profile"
-            />
+            <img className="profile-photo" src="assets/img/bg front end.jpg" alt="Profile"/>
           </div>
           <div className="profile-name-section">
             <h1 className="profile-name">Key Alderen</h1>
             <p className="profile-subtitle">keyalderen</p>
-          </div>
-          <Link to="/beranda" className="logout-button">Logout</Link>
-        </div>
+            </div>
+              <button onClick={Logout} className="logout-button">Logout</button>
+            </div>
 
         <div className="options-container">
           <div className="option-item" onClick={() => setModal("uploadPhoto")}>
