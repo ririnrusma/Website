@@ -77,8 +77,8 @@ const AppContent = ({ isAdmin, isLoggedIn, setIsLoggedIn }) => {
 };
 
 const App = () => {
-  const [isAdmin, setIsAdmin] = useState(true); 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <Router>

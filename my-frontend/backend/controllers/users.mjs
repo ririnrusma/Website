@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken"
 export const getUsers = async(req, res) => {
     try{
         const users = await Users.findAll({
-            attributes: ['id', 'name', 'email']
+            attributes: ['id', 'name', 'email', 'createdAt']
         });
         res.json(users);
     } catch(error){
@@ -83,3 +83,18 @@ export const Logout = async(req, res) => {
     res.clearCookie('refreshToken');
     return res.sendStatus(200);
 }
+
+export const deleteUser = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await db.query('DELETE FROM users WHERE id = ?', [id]);
+        if (result.affectedRows > 0) {
+            res.status(200).send({ message: 'User deleted successfully' });
+        } else {
+            res.status(404).send({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        res.status(500).send({ message: 'Error deleting user' });
+    }
+};

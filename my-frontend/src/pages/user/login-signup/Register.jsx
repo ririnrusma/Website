@@ -61,7 +61,6 @@ const Register = () => {
                         </div>
                     </div>
 
-                    {/* Input Email */}
                     <div className="input-log">
                         <div className="uname-log">Email</div>
                         <div className="wrapper-log">
@@ -88,7 +87,6 @@ const Register = () => {
                         </div>
                     </div>
 
-                    {/* Input Konfirmasi Kata Sandi */}
                     <div className="input-log">
                         <div className="uname-log">Konfirmasi Kata Sandi</div>
                         <div className="wrapper-log">

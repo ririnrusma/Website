@@ -1,14 +1,14 @@
 GET http://localhost:5000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU1LCJuYW1lIjoidmVsb3oiLCJlbWFpbCI6InJ5dUBnbWFpbC5jb20iLCJpYXQiOjE3MzM1Mjc4ODEsImV4cCI6MTczMzUyNzk0MX0.pPfIXdzhKA7WhOq3Mj6HjOMDPyLvqbMIQ3UoyneW-NI
+Authorization: Bearer 
 ###
 POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name": "yu",
-    "email": "ryjgu@gmail.com",
-    "password": "bbbb97",
-    "confirPassword": "bbbb97"
+    "name": "liaaaa",
+    "email": "tuabd@gmail.com",
+    "password": "123ewhw",
+    "confirPassword": "123ewhw"
 }
 
 ###
@@ -25,3 +25,13 @@ GET http://localhost:5000/token
 
 ###
 DELETE http://localhost:5000/logout
+
+###
+GET http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+    "id": 57,
+    "name": "ririn",
+    "email": "ririnrusmayanti35@gmail.com",
+  },
