@@ -1,0 +1,14 @@
+{
+  "name": "Website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"pnpm run start:dev\" \"npm run dev\"",
+    "start:dev": "pnpm run start:dev --prefix backend",
+    "dev": "pnpm run dev --prefix frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

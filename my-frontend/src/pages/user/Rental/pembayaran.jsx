@@ -37,6 +37,7 @@ const Pembayaran = () => {
         </div>
       </div>
       <div className="qr-code-title">SCAN QR CODE dibawah ini</div>
+      <img className="qr-code" src="/assets/img/barcode.png" alt="QR Code" />
       <div className="back-button">
         <Link to="/profil" className="back-button-text">Back</Link>
       </div>

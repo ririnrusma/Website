@@ -207,15 +207,18 @@ body{
 }
 
 .pembayaran-container {
-  width: 1280px;
-  height: 823px;
-  position: relative;
-  background-color: #f9eede;
+  background-color: #fcefe3;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
 }
 
 .detail-title {
   position: absolute;
-  left: 50px;
+  left: 100px;
   top: 128px;
   text-align: center;
   color: #ff2020;
@@ -228,7 +231,7 @@ body{
   width: 824px;
   height: 120px;
   position: absolute;
-  left: 385px;
+  left: 470px;
   top: 234px;
   background-color: white;
   border: 1px solid #ff0000;
@@ -263,7 +266,7 @@ body{
 .payment-method {
   height: 300px;
   position: absolute;
-  left: 385px;
+  left: 470px;
   top: 394px;
   background-color: white;
   border: 1px solid #ff0000;
@@ -290,7 +293,7 @@ body{
 
 .qr-code-title {
   position: absolute;
-  left: 60px;
+  left: 100px;
   top: 234px;
   text-align: center;
   color: black;
@@ -303,7 +306,7 @@ body{
   width: 72px;
   height: 32px;
   position: absolute;
-  left: 1137px;
+  left: 1228px;
   top: 138px;
   background-color: #ff5d5d;
   border-radius: 15px;
@@ -320,3 +323,8 @@ body{
   font-family: 'Inter', sans-serif;
 }
 
+.qr-code {
+  position: absolute;
+  left: 100px;
+  top: 300px;
+}
