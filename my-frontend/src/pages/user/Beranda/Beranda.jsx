@@ -2,15 +2,11 @@ import { useNavigate } from "react-router-dom";
 import React from 'react';
 import './beranda.css'; 
 
-const Beranda = ({ isLoggedIn }) => { 
+const Beranda = () => { 
   const navigate = useNavigate();
 
   const handleSewaClick = () => {
-    if (isLoggedIn) {
-      navigate("/daftarsepeda"); 
-    } else {
-      console.log("Pengguna tidak terautentikasi.");
-    }
+    navigate("/daftarsepeda"); 
   };
 
   return (
