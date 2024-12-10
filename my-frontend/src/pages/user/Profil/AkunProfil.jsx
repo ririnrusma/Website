@@ -5,17 +5,16 @@ import "./profile.css";
 
 const AkunProfil = () => {
   const [modal, setModal] = useState(null); 
+  const navigate = useNavigate();
 
   const closeModal = () => setModal(null);
 
-  const navigate = useNavigate();
-
   const Logout = async() => {
-    try{
+    try {
         await axios.delete('http://localhost:5000/logout');
-        navigate("/beranda")
+        navigate("/login");
     } catch (error) {
-      console.log(error);
+        console.log("Logout error:", error);
     }
   }
 
@@ -28,9 +27,9 @@ const AkunProfil = () => {
           <div className="profile-name-section">
             <h1 className="profile-name">Key Alderen</h1>
             <p className="profile-subtitle">keyalderen</p>
-            </div>
-              <button onClick={Logout} className="logout-button">Logout</button>
-            </div>
+          </div>
+          <button onClick={Logout} className="logout-button">Logout</button>
+        </div>
 
         <div className="options-container">
           <div className="option-item" onClick={() => setModal("uploadPhoto")}>

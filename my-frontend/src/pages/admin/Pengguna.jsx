@@ -1,38 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
 const Pengguna = () => {
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [users, setUsers] = useState([
+        { id: 55, name: 'veloz', email: 'ryu@gmail.com', createdAt: '2024-12-06 05:21:11' },
+        { id: 57, name: 'ririn', email: 'ririnrusmayanti35@gmail.com', createdAt: '2024-12-06 05:44:50' },
+        { id: 63, name: 'alma', email: 'aalmaa@gmail.com', createdAt: '2024-12-07 04:05:06' },
+        { id: 65, name: 'rusma', email: 'rus@gmail.com', createdAt: '2024-12-08 22:58:23' },
+        { id: 73, name: 'ririrus', email: 'rusma@gmail.com', createdAt: '2024-12-09 10:06:01' },
+        { id: 75, name: 'ruswma', email: 'rusmaaas@gmail.com', createdAt: '2024-12-09 13:27:16' },
+        { id: 76, name: 'admin', email: 'admin@example.com', createdAt: '2024-12-09 13:27:16' },
+        { id: 77, name: 'Key Alderen', email: 'key@example.com', createdAt: '2024-12-11 09:22:12' },
+    ]);
 
-    const fetchUsers = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/users');
-        console.log(response.data);
-      } catch (error) {
-        console.error('Error fetching users:', error.message);
-      }
-    };    
-
-    const handleDelete = async (userId) => {
-        try {
-            await axios.delete(`http://localhost:5000/api/users/${userId}`, {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-                }
-            });
-            alert('User deleted successfully');
-            fetchUsers(); 
-        } catch (error) {
-            console.error('Error deleting user:', error);
-        }
+    const handleDelete = (userId) => {
+        const updatedUsers = users.filter(user => user.id !== userId);
+        setUsers(updatedUsers);
+        alert(`User  with ID ${userId} deleted successfully`);
     };
-
-    useEffect(() => {
-        fetchUsers();
-    }, []);
-
-    if (loading) return <div>Loading...</div>;
 
     return (
         <div style={styles.container}>
@@ -54,9 +38,7 @@ const Pengguna = () => {
                                 <td style={styles.td}>{user.id}</td>
                                 <td style={styles.td}>{user.name}</td>
                                 <td style={styles.td}>{user.email}</td>
-                                <td style={styles.td}>
-                                    {new Date(user.createdAt).toLocaleString()}
-                                </td>
+                                <td style={styles.td}>{user.createdAt}</td>
                                 <td style={styles.td}>
                                     <button
                                         onClick={() => handleDelete(user.id)}

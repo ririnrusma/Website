@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { jwtDecode } from "jwt-decode";
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import axios from 'axios';
 import './style.css';
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = ({ setIsLoggedIn, setIsAdmin }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [msg, setMsg] = useState('');
@@ -19,9 +21,19 @@ const Login = ({ setIsLoggedIn }) => {
                 password,
             });
 
-            console.log('Login berhasil:', response.data);
+            const { accessToken } = response.data;
+            localStorage.setItem('accessToken', accessToken);
+
+            const user = jwtDecode(accessToken);
+
             setIsLoggedIn(true);
-            navigate('/beranda');
+            setIsAdmin(user.isAdmin); 
+
+            if (user.isAdmin) {
+                navigate('/dashboard');
+            } else {
+                navigate('/beranda');
+            }
         } catch (error) {
             if (error.response && error.response.data.msg) {
                 setMsg(error.response.data.msg);
@@ -38,13 +50,13 @@ const Login = ({ setIsLoggedIn }) => {
                 <form onSubmit={handleLogin}>
                    <p className="error-message">{msg}</p> 
                     <div className="input-log">
-                        <div className="uname-log">Email atau Nama Pengguna</div>
+                        <div className="uname-log">Email</div>
                         <div className="wrapper-log">
                             <input
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Masukkan email atau nama pengguna"
+                                placeholder="Masukkan email"
                                 className="input-field"
                                 required
                             />

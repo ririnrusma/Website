@@ -20,20 +20,20 @@ import Sewa from "./pages/user/Rental/Sewa";
 import RentalAcc from "./pages/user/Rental/RentalAcc";
 import Beranda from "./pages/user/Beranda/Beranda";
 import Kontak from "./pages/user/Kontak kami/Kontak";
-import TransaksiUser from "./pages/user/Rental/Transaksi";
+import TransaksiUser  from "./pages/user/Rental/Transaksi";
 import Register from "./pages/user/login-signup/Register";
 import Konfirmasi from "./pages/user/Kontak kami/Konfirmasi";
 import Navbar from "./component/user/navbar/Navbar";
 import Footer from "./component/user/footer/Footer";
 import Pembayaran from "./pages/user/Rental/Pembayaran";
 
-const AppContent = ({ isAdmin, isLoggedIn, setIsLoggedIn }) => {
+const AppContent = ({ isAdmin, setIsAdmin, isLoggedIn, setIsLoggedIn }) => {
   const location = useLocation();
   const noLayoutPages = ["/"];
   const isNoLayoutPage = noLayoutPages.includes(location.pathname);
 
+  // Admin Routes
   if (isAdmin) {
-    // Admin Routes
     return (
       <div style={{ display: "flex" }}>
         {!isNoLayoutPage && <Sidebar />}
@@ -45,6 +45,7 @@ const AppContent = ({ isAdmin, isLoggedIn, setIsLoggedIn }) => {
             <Route path="/jenis-sepeda" element={<JenisSepeda />} />
             <Route path="/transaksi" element={<TransaksiAdmin />} />
             <Route path="/pengguna" element={<Pengguna />} />
+            <Route path="*" element={<Navigate to="/dashboard" />} /> {/* Redirect jika rute tidak ditemukan */}
           </Routes>
         </div>
       </div>
@@ -58,18 +59,19 @@ const AppContent = ({ isAdmin, isLoggedIn, setIsLoggedIn }) => {
       <Routes>
         <Route path="/" element={<Beranda />} />
         <Route path="/beranda" element={<Beranda />} />
-        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setIsAdmin={setIsAdmin} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/lokasi" element={<Lokasi />} />
         <Route path="/daftarsepeda" element={<DaftarSepeda />} />
         <Route path="/rental" element={<Rental />} />
         <Route path="/sewa" element={<Sewa />} />
         <Route path="/rentalacc" element={<RentalAcc />} />
-        <Route path="/transaksi" element={<TransaksiUser />} />
+        <Route path="/transaksi" element={<TransaksiUser  />} />
         <Route path="/kontakkami" element={<Kontak />} />
         <Route path="/konfirmasi" element={<Konfirmasi />} />
         <Route path="/profil" element={<AkunProfil />} />
         <Route path="/pembayaran" element={<Pembayaran />} />
+        <Route path="*" element={<Navigate to="/" />} /> 
       </Routes>
       <Footer />
     </div>
@@ -82,7 +84,12 @@ const App = () => {
 
   return (
     <Router>
-      <AppContent isAdmin={isAdmin} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <AppContent 
+        isAdmin={isAdmin} 
+        isLoggedIn={isLoggedIn} 
+        setIsLoggedIn={setIsLoggedIn} 
+        setIsAdmin={setIsAdmin}
+      />
     </Router>
   );
 };
