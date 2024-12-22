@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2024 at 11:52 AM
+-- Generation Time: Dec 17, 2024 at 02:36 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.2.34
 
@@ -117,18 +117,64 @@ CREATE TABLE `rental` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `access_secret` bigint(20) NOT NULL,
+  `createdAt` datetime DEFAULT current_timestamp(),
+  `deletedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sepeda`
+--
+
+CREATE TABLE `sepeda` (
+  `id` int(11) NOT NULL,
+  `brand` varchar(255) NOT NULL,
+  `model` varchar(255) NOT NULL,
+  `maxload` varchar(255) NOT NULL,
+  `motorpower` varchar(255) NOT NULL,
+  `range` varchar(255) NOT NULL,
+  `maxspeed` varchar(255) NOT NULL,
+  `img` varchar(255) DEFAULT NULL,
+  `jumlah` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(10) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `refresh_token` text NOT NULL,
-  `createdAt` datetime DEFAULT current_timestamp(),
-  `updatedAt` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `refresh_token` text DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  `isAdmin` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `refresh_token`, `createdAt`, `updatedAt`, `isAdmin`) VALUES
+(55, 'veloz', 'ryu@gmail.com', '$2b$10$YoayLUOXHKLnLXvG3ewYvOMiCqUZLZrVu7DFeOxoin9i1qYhnSUzG', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU1LCJuYW1lIjoidmVsb3oiLCJlbWFpbCI6InJ5dUBnbWFpbC5jb20iLCJpYXQiOjE3MzM1NjUwODgsImV4cCI6MTczMzY1MTQ4OH0._Plw1c5o-us5bWL6v2PWIUkHVCXG3rYfVNgrZUErzpw', '2024-12-06 05:21:11', '2024-12-07 09:51:28', 0),
+(57, 'ririn', 'ririnrusmayanti35@gmail.com', '$2b$10$MCxgKnX0tH34ECA2ReAK1.4Fkq02wh5kbKbRcNz.Pj2m.BUy4efP.', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU3LCJuYW1lIjoicmlyaW4iLCJlbWFpbCI6InJpcmlucnVzbWF5YW50aTM1QGdtYWlsLmNvbSIsImlhdCI6MTczMzQ2Njg5NywiZXhwIjoxNzMzNTUzMjk3fQ.PVnG3cKAOYmqUhCz6LISAuONKhsksPMognCd69DrK5U', '2024-12-06 05:44:50', '2024-12-06 06:34:57', 0),
+(63, 'alma', 'aalmaa@gmail.com', '$2b$10$x6WwSog2.yvcah/Fv33Ee.0iHhOLyNvoF2D8ZY36D5ztq8aZnUv2i', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYzLCJuYW1lIjoiYWxtYSIsImVtYWlsIjoiYWFsbWFhQGdtYWlsLmNvbSIsImlhdCI6MTczMzU0NDQyNiwiZXhwIjoxNzMzNjMwODI2fQ.fqLp1t5f45JchCISkMKdyp2HncG9m4QxYe30C2f3ak4', '2024-12-07 04:05:06', '2024-12-07 04:07:06', 0),
+(65, 'rusma', 'rus@gmail.com', '$2b$10$KlFNpgujWZpI2PevRfnDnu5gxeEwGD3u4TdCz3HKKXmafKpySoBVu', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjY1LCJuYW1lIjoicnVzbWEiLCJlbWFpbCI6InJ1c0BnbWFpbC5jb20iLCJpYXQiOjE3MzM3MDc0MDQsImV4cCI6MTczMzc5MzgwNH0.xx2gUEagqA6DFHADxbaEzUt8SFmim3_NxC2slMVeeEc', '2024-12-08 22:58:23', '2024-12-09 01:23:24', 0),
+(73, 'ririrus', 'rusma@gmail.com', '$2b$10$yMIhsCh3wzXHakrNecyMZO6x1KoT.5vRxcqEax4pqAgn5BFoW2z1i', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjczLCJuYW1lIjoicmlyaXJ1cyIsImVtYWlsIjoicnVzbWFAZ21haWwuY29tIiwiaWF0IjoxNzMzNzM4NzYyLCJleHAiOjE3MzM4MjUxNjJ9.ZuA7HDXwoRb389CtCpfiLNK6SXNnYv6o9uUHl7H0-kk', '2024-12-09 10:06:01', '2024-12-09 10:06:02', 0),
+(75, 'ruswma', 'rusmaaas@gmail.com', '$2b$10$cx7mAl7iMaZB/u3Gp88us.07Xg00OO5s3/gxQO/ZsrdHAWZ0xsEQu', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc1LCJuYW1lIjoicnVzd21hIiwiZW1haWwiOiJydXNtYWFhc0BnbWFpbC5jb20iLCJpYXQiOjE3MzM3NTA4NDAsImV4cCI6MTczMzgzNzI0MH0.qQb-iNGEbkXrHhwtU-k_eK3-UHRgPzZhb-oY1vgwaGs', '2024-12-09 13:27:16', '2024-12-09 13:27:20', 0),
+(76, 'admin', 'admin@example.com', 'admin123', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1);
 
 --
 -- Indexes for dumped tables
@@ -170,11 +216,23 @@ ALTER TABLE `rental`
   ADD KEY `sepeda_id` (`sepeda_id`);
 
 --
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `access_secret` (`access_secret`);
+
+--
+-- Indexes for table `sepeda`
+--
+ALTER TABLE `sepeda`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -211,10 +269,22 @@ ALTER TABLE `rental`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sepeda`
+--
+ALTER TABLE `sepeda`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- Constraints for dumped tables

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useSepedaContext } from "../context/SepedaContext";
+import { useSepedaContext } from "../../context/SepedaContext";
 
 const JenisSepeda = () => {
   const navigate = useNavigate();

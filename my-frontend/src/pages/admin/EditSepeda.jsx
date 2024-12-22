@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useSepedaContext } from "../context/SepedaContext";
+import { useSepedaContext } from "../../context/SepedaContext";
 
 const EditSepeda = () => {
   const { id } = useParams(); // Ambil ID dari URL

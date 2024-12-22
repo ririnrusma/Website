@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSepedaContext } from "../context/SepedaContext"; // Import context
+import { useSepedaContext } from "../../context/SepedaContext"; // Import context
 
 const TambahSepeda = () => {
   const { addSepeda } = useSepedaContext();
